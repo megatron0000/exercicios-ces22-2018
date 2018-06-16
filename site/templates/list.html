@@ -1,0 +1,19 @@
+<a style="margin:10px; display:block" href="{{ url_for('login') }}">Login with another username</a>
+<a style="margin:10px; display:block" href="{{ url_for('logout') }}">Log out</a>
+<a style="margin:10px; display:block" href="{{ url_for('upload') }}">Upload a new photo</a>
+<br>
+<h1 id="username">
+    Your images, {{username}}
+</h1>
+
+{% if nophoto %}
+<p style="color: red">
+    No photos yet.
+</p>
+{% endif %}
+
+<ul>
+{% for photo in photonameurls %}
+    <li><a href="{{ photo.url }}">{{ photo.name }}</a></li>
+{% endfor %}
+</ul>

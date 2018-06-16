@@ -1,0 +1,17 @@
+<a style="margin:10px; display:block" href="{{ url_for('index') }}">Home</a>
+<a style="margin:10px; display:block" href="{{ url_for('login') }}">Login with another username</a>
+<a style="margin:10px; display:block" href="{{ url_for('upload') }}">Upload a new photo</a>
+
+<h1>
+    Logged out
+</h1>
+
+{% if was_logged_in %}
+<p>
+    You have logged out
+</p>
+{% else %}
+<p>
+    You were not logged in. Nothing was done
+</p>
+{% endif %}

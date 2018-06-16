@@ -1,0 +1,40 @@
+<a style="margin:10px; display:block" href="{{ url_for('index') }}">Home</a>
+
+<h1>
+    Log in
+</h1>
+
+{% if error %}
+<h2>
+    Could not login. Try again
+</h2>
+{% endif %}
+
+<form action="{{ url_for('login') }}" method="POST">
+    <input type="text" name="username" required placeholder="username">
+    <input type="submit" value="Submit">
+</form>
+
+{% if forced %}
+<script>
+    function getCookieValue(a) {
+        var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+        return b ? b.pop() : '';
+    }
+
+    let username = getCookieValue('username');
+
+    console.log(username);
+
+    if (username !== '') {
+        var form = new FormData();
+        form.append('username', username);
+        var request = new XMLHttpRequest();
+        request.open('POST', '/login');
+        request.send(form);
+        request.onload = function() {
+            window.location.pathname = '/';
+        };
+    }
+</script>
+{% endif %}

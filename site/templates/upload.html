@@ -1,0 +1,26 @@
+<a style="margin:10px; display:block" href="{{ url_for('index') }}">Home</a>
+
+<h1>
+    Upload an image
+</h1>
+
+{% if error %}
+<div style="background: red">
+    {{ error }}
+</div>
+{% endif %}
+
+{% if success %}
+<div style="background: green">
+    {{ success }}
+</div>
+{% endif %}
+
+<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+
+    <label for="photo">Image file:</label>
+    <br>
+    <input type=file id="photo" name=photo>
+    <br>
+    <input type="submit" value="Submit">
+</form>
